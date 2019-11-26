@@ -42,11 +42,15 @@ type FlagWithSomethingProp = Pick<
   | 'withCallingCodeButton'
   | 'withFlagButton'
   | 'placeholder'
+  | 'textStyles'
 > & { flagSize: number }
 
-const FlagText = (props: TextProps & { children: ReactNode }) => (
-  <CountryText {...props} style={styles.something} />
-)
+const FlagText = (props: TextProps & { children: ReactNode }) => {
+  console.log(props);
+  return(
+  <CountryText {...props} style={[styles.something]} />
+);
+  }
 
 const FlagWithSomething = memo(
   ({
@@ -58,6 +62,7 @@ const FlagWithSomething = memo(
     withFlagButton,
     flagSize,
     placeholder,
+    textStyles,
   }: FlagWithSomethingProp) => {
     const { translation, getCountryInfoAsync } = useContext()
     const [state, setState] = useState({
@@ -77,6 +82,7 @@ const FlagWithSomething = memo(
       withCountryNameButton,
       withCurrencyButton,
       withCallingCodeButton,
+      textStyles,
     ])
 
     return (
@@ -112,6 +118,7 @@ interface FlagButtonProps {
   containerButtonStyle?: StyleProp<ViewStyle>
   countryCode?: CountryCode
   placeholder: string
+  textStyles?:StyleProp
   onOpen?(): void
 }
 
@@ -125,6 +132,7 @@ export const FlagButton = ({
   containerButtonStyle,
   onOpen,
   placeholder,
+  textStyles
 }: FlagButtonProps) => {
   const { flagSizeButton: flagSize } = useTheme()
   return (
@@ -146,6 +154,7 @@ export const FlagButton = ({
             withFlagButton,
             flagSize: flagSize!,
             placeholder,
+            textStyles
           }}
         />
       </View>

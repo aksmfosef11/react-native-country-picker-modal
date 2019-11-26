@@ -63,6 +63,7 @@ interface CountryPickerProps {
   withModal?: boolean
   visible?: boolean
   placeholder?: string
+  textStyles?:StyleProp
   containerButtonStyle?: StyleProp<ViewStyle>
   closeButtonImage?: ImageSourcePropType
   closeButtonStyle?: StyleProp<ViewStyle>
@@ -106,6 +107,7 @@ export const CountryPicker = (props: CountryPickerProps) => {
     closeButtonImageStyle,
     excludeCountries,
     placeholder,
+    textStyles
   } = props
   const [state, setState] = useState<State>({
     visible: props.visible || false,
@@ -154,6 +156,7 @@ export const CountryPicker = (props: CountryPickerProps) => {
     onOpen,
     containerButtonStyle,
     placeholder,
+    textStyles
   }
 
   useEffect(() => {
