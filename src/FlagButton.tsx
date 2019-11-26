@@ -45,9 +45,11 @@ type FlagWithSomethingProp = Pick<
   | 'textStyles'
 > & { flagSize: number }
 
-const FlagText = (props: TextProps & { children: ReactNode }) => (
+const FlagText = (props: TextProps & { children: ReactNode }) => {
+  console.log(props);
+  return (
   <CountryText {...props} style={styles.something} />
-)
+);}
 
 const FlagWithSomething = memo(
   ({
