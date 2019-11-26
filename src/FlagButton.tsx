@@ -42,6 +42,7 @@ type FlagWithSomethingProp = Pick<
   | 'withCallingCodeButton'
   | 'withFlagButton'
   | 'placeholder'
+  | 'textStyles'
 > & { flagSize: number }
 
 const FlagText = (props: TextProps & { children: ReactNode }) => (
@@ -56,6 +57,7 @@ const FlagWithSomething = memo(
     withCurrencyButton,
     withCallingCodeButton,
     withFlagButton,
+    textStyles,
     flagSize,
     placeholder,
   }: FlagWithSomethingProp) => {
@@ -109,6 +111,7 @@ interface FlagButtonProps {
   withCurrencyButton?: boolean
   withCallingCodeButton?: boolean
   withFlagButton?: boolean
+  textStyles?:StyleProp
   containerButtonStyle?: StyleProp<ViewStyle>
   countryCode?: CountryCode
   placeholder: string
@@ -121,6 +124,7 @@ export const FlagButton = ({
   withCallingCodeButton,
   withCurrencyButton,
   withFlagButton,
+  textStyles,
   countryCode,
   containerButtonStyle,
   onOpen,
@@ -144,6 +148,7 @@ export const FlagButton = ({
             withCallingCodeButton,
             withCurrencyButton,
             withFlagButton,
+            textStyles,
             flagSize: flagSize!,
             placeholder,
           }}
